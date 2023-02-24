@@ -1,0 +1,197 @@
+.form-container {
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.form-groups {
+  padding: 30px;
+  text-align: left;
+  border-radius: 20px;
+  width: 300px;
+  border-style: outset;
+}
+.form-groups:hover {
+  box-shadow: 0px 10px 5px 12px lightblue;
+}
+
+.form-title {
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 3px #000000;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding: 10px 5px;
+}
+
+.input {
+  /* width: 100%; */
+  height: 40px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000000;
+}
+.align-font {
+  padding-bottom: 10px;
+}
+.form-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+.form-link:hover {
+  text-decoration: underline;
+}
+.title {
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+button {
+  padding: 5px;
+}
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+}
+.btnn {
+  padding: 8px;
+}
+
+table,
+th,
+td {
+  padding: 25px;
+  border: 1px solid black;
+}
+.tableData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.tablerow {
+  background-color: lightsteelblue;
+}
+.tableheader {
+  background-color: aliceblue;
+}
+.tablecolumn {
+  background-color: yellowgreen;
+}
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bttt {
+  justify-items: center;
+  text-align: center;
+}
+.btnInc {
+  margin-right: 40px;
+  background-color: rgb(121, 233, 121);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.btnDec {
+  background-color: rgb(243, 122, 122);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
+}
+.btnRes {
+  background-color: black;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+.Table {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.Blog {
+  align-content: center;
+  text-align: center;
+}
+.search {
+  padding: 5px;
+  border: none;
+  border-radius: 6px;
+  border-bottom: 2px solid;
+  background-color: rgb(247, 241, 233);
+}
+.Go {
+  margin-left: 10px;
+  border-radius: 50%;
+  padding: 10px;
+  border: none;
+  background-color: rgb(181, 240, 181);
+  font-weight: bold;
+  border-style: groove;
+}
+.TableData {
+  padding: 40px;
+  background-color: ghostwhite;
+  border-right: 2px solid;
+  border-bottom: 4px solid;
+  border-top: 1px solid;
+}
+.Go:hover {
+  background-color: gray;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #383636; /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.spin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
