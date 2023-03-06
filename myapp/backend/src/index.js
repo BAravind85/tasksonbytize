@@ -13,7 +13,7 @@ app.use("/users", route);
 mongoose
   .set("strictQuery", true)
   .connect(
-    "mongodb+srv://BAravind:Ove8lFm1eJquJqMx@cluster0.fq4pskd.mongodb.net/UserCredentials"
+    "mongodb+srv://BAravind:Aru9900@cluster0.fq4pskd.mongodb.net/UserCredentials"
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));

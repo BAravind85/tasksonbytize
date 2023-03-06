@@ -6,6 +6,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+
 // import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
@@ -34,7 +35,8 @@ export default function Home() {
     handleSubmit,
   } = useForm(formOptions);
   const onSubmit = async (data) => {
-    const result = await axios.post("http://localhost:3000/api/users", data);
+    try{
+    const result = await axios.post("http://localhost:3001/api/signup", data)
     console.log("result", result);
     console.log(data);
     toast("Registared Successfully", {
@@ -44,6 +46,15 @@ export default function Home() {
       position: "top-right",
     });
     router.push("/login");
+  }catch(error){
+    console.log(error)
+    toast("Email already in user or Password",{
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: "error",
+      position: "top-right",
+    });
+  }
   };
   console.log(errors);
 
@@ -61,28 +72,28 @@ export default function Home() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center items-center w-full bg-lime-50 ">
-          <div className="p-12 m-20 bg-teal-500  shadow-2xl rounded-br-xl border-stone-300 rounded-md hover:drop-shadow-2xl">
-            <div className="text-center">
-              <div className="text-xl font-bold underline text-white">
-                Register
+        <div className="flex justify-center items-center w-full bg-teal-50">
+          <img className="m-20"src="https://posbytz.s3.ap-south-1.amazonaws.com/partners/1/image_1630190079464.png" alt="image"/>
+          <div className="p-4 m-20 border-solid border-2 border-grey-600 rounded bg-white ">
+            <div className="">
+              <div className="text-2xl mb-4">
+                Register Account
+              </div>
+              <div className="text-sm">
+                  <p className="text-neutral-500 mb-4">Free on-boarding support. No credit card required.</p>
               </div>
             </div>
             <div className="pb-2">
-              <div>
-                <div className="p-1 text-base">Email address</div>
-              </div>
               <input
                 {...register("email", { required: true })}
                 type="email"
                 // value={state.email}
                 // onChange={(e) => setState({ ...state, email: e.target.value })}
-                placeholder="Email address"
-                className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                placeholder="Your Email"
+                className="mt-1 px-3 py-3 w-96 bg-white border shadow-sm border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1"
               />
-              <p className="text-rose-700">{errors.email?.message}</p>
             </div>
-            <div>Password</div>
+              {<p className="text-rose-700">{errors.email?.message}</p>}
             <div>
               <input
                 type="password" // if show password is true type will be text otherwise its text
@@ -92,14 +103,11 @@ export default function Home() {
                 // }
                 {...register("password", { required: true })}
                 placeholder="Password"
-                className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                className="mt-5 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1"
               />
-              <p className="text-rose-700">{errors.password?.message}</p>
-
+               {<p className="text-rose-700">{errors.password?.message}</p>}
               <img />
             </div>
-            <div className="text-base">Confirm Password</div>
-
             <div>
               <input
                 type="password"
@@ -109,15 +117,14 @@ export default function Home() {
                 // }
                 {...register("confirmPassword", { required: true })}
                 placeholder="Confrim Password"
-                className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                className="mt-5 px-3 py-3 bg-white  border shadow-sm border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded sm:text-sm focus:ring-1"
               />
               <p className="text-rose-700">{errors.confirmPassword?.message}</p>
             </div>
-            <div className="text-center p-2">
+            <div className="mt-9">
               <button
-                className="p-1.5 bg-white rounded-md hover:bg-sky-200"
+                className="bg-orange-600 px-3 py-3 w-full rounded text-white hover:bg-orange-700"
                 type="submit"
-                // onClick={submitHandler}
               >
                 SignUp
               </button>
@@ -129,9 +136,11 @@ export default function Home() {
                 Login here
               </Link>
             </div>
-          </div>
+            </div>
         </div>
       </form>
     </>
   );
 }
+//https://posbytz.s3.ap-south-1.amazonaws.com/partners/1/image_1630190079464.png
+{/* <div class="bg-no-repeat bg-left ..." style="background-image: url(...);"></div> */}

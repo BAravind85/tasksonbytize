@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRouter } from "next/router";
-import axios from "axios";
+import axios from "axios";  
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -27,19 +27,26 @@ export default function Login() {
     handleSubmit,
   } = useForm(formOptions);
   const onSubmit = async (data) => {
-    const result = await axios
-      .post("http://localhost:3000/api/users", data)
-      .then(async (result) => {
-        const res = await fetch("/api/users");
-        // console.log(res);
-        // console.log(data);
-        toast.success("Login Successfully");
-        router.push("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.response.data.message);
-      });
+    try{
+    const result = await axios.post("http://localhost:3001/api/login", data)
+    console.log("result", result);
+    console.log(data);
+    toast("Login Successfully", {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: "success",
+      position: "top-right",
+    });
+    router.push("/home");
+  }catch(error){
+    console.log(error)
+    toast("Email already in user or Password",{
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: "error",
+      position: "top-center",
+    });
+  }
   };
   console.log(errors);
   // const [state, setState] = useState({
@@ -56,8 +63,8 @@ export default function Login() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center items-center w-full bg-lime-50">
-          <div className="p-12 m-20 bg-cyan-500  shadow-2xl rounded-br-xl border-stone-300 rounded-md hover:drop-shadow-2xl">
+        <div className="flex justify-center items-center w-full bg-lime-50 ">
+          <div className="p-12 m-20 bg-cyan-500  h-96 shadow-2xl rounded-br-xl border-stone-300 rounded-md hover:drop-shadow-2xl">
             <div className="text-center">
               <div className="text-xl font-bold underline text-white">
                 Login
@@ -77,7 +84,7 @@ export default function Login() {
               />
               <p className="text-rose-700">{errors.email?.message}</p>
             </div>
-            <div>Password</div>
+            <div className="space-y-6">Password</div>
             <div>
               <input
                 type="password"
@@ -93,7 +100,7 @@ export default function Login() {
               <button
                 type="submit"
                 className="h-full w-20 p-1 bg-white rounded-md hover:bg-sky-200"
-                // onClick={submitHandler}
+                // onClick={onSubmit}
               >
                 SignIn
               </button>

@@ -11,6 +11,5 @@ export default function handler(req, res) {
     } else {
       res.status(401).json({ message: "Invalid Credentials" });
     }
-  } else if (req.method == "POST") {
-  }
+  } 
 }
