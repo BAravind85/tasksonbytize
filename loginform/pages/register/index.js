@@ -71,10 +71,16 @@ export default function Home() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center items-center w-full bg-teal-50">
-          <img className="m-20"src="https://posbytz.s3.ap-south-1.amazonaws.com/partners/1/image_1630190079464.png" alt="image"/>
-          <div className="p-4 m-20 border-solid border-2 border-grey-600 rounded bg-white ">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center items-center w-full bg-teal-50">
+        <div className="flex pr-20">
+          <div className="m-20">
+          <img className="pr-20"src="https://posbytz.s3.ap-south-1.amazonaws.com/partners/1/image_1630190079464.png" alt="image"/>
+          </div>
+          <div className='p-15'>
+            <div className="mt-10 mb-4">
+            <img className="object-cover h-20 w-25"src="https://posbytz.s3.ap-south-1.amazonaws.com/partners/1/logo_1630189049088.png" alt="header"/>
+            </div>     
+          <div className="p-6  w-96 border-solid border-2 border-grey-600 rounded bg-white ">
             <div className="">
               <div className="text-2xl mb-4">
                 Register Account
@@ -83,14 +89,17 @@ export default function Home() {
                   <p className="text-neutral-500 mb-4">Free on-boarding support. No credit card required.</p>
               </div>
             </div>
-            <div className="pb-2">
+            <div className="pb-2 ">
               <input
                 {...register("email", { required: true })}
                 type="email"
                 // value={state.email}
                 // onChange={(e) => setState({ ...state, email: e.target.value })}
-                placeholder="Your Email"
-                className="mt-1 px-3 py-3 w-96 bg-white border shadow-sm border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1"
+                placeholder="Your Email"            
+                className="mt-1 px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1 
+                disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
             </div>
               {<p className="text-rose-700">{errors.email?.message}</p>}
@@ -103,7 +112,7 @@ export default function Home() {
                 // }
                 {...register("password", { required: true })}
                 placeholder="Password"
-                className="mt-5 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1"
+                className="mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none focus:border-indigo-700 focus:ring-indigo-700 block w-full rounded  sm:text-sm focus:ring-1"
               />
                {<p className="text-rose-700">{errors.password?.message}</p>}
               <img />
@@ -129,9 +138,10 @@ export default function Home() {
                 SignUp
               </button>
             </div>
-            <div>
+            </div>
+            <div className="flex justify-center  mt-4 ">
               Already have an account ?
-              <Link href="/login" className="text-blue-600 hover:text-white">
+              <Link href="/login" className="text-blue-600 hover:text-indigo-700">
                 {" "}
                 Login here
               </Link>
