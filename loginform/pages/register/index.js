@@ -178,7 +178,13 @@ export default function Home() {
                   {errors.confirmPassword?.message}
                 </p>
               </div>
-              <div className="mt-9">
+              <div className="text-sm mt-9">
+                By clicking register,I accept the&nbsp;
+                <Link href="https://posbytz.com/terms-and-conditions/" className="text-indigo-900">
+                  Terms & Conditions
+                </Link>
+              </div>
+              <div className="mt-3">
                 <button
                   className="bg-orange-500 px-3 py-3 w-full rounded text-white hover:bg-orange-600"
                   type="submit"
