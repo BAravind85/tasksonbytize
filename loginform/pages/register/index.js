@@ -129,7 +129,7 @@ export default function Home() {
                   placeholder="Your Email"
                   className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${
                     errors.email ? "border-red-500 ring-red-500" : ""
-                  } block w-full rounded focus:border-indigo-600 ring-indigo-600  sm:text-sm focus:ring-1`}
+                  } block w-full rounded focus:border-indigo-600  focus:ring-indigo-900  sm:text-sm focus:ring-1`}
                 />
               </div>
               {<p class="text-red-600 text-sm">{errors.email?.message}</p>}
@@ -170,9 +170,7 @@ export default function Home() {
                   type={password}
                   {...register("confirmPassword", { required: true })}
                   placeholder="Confrim Password"
-                  className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${
-                    errors.password ? "border-red-500 ring-red-500" : ""
-                  } block w-full rounded  focus:border-indigo-600 ring-indigo-600  sm:text-sm focus:ring-1`}
+                  className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${errors.password ? "border-red-500 ring-red-500" : ""} block w-full rounded  focus:border-indigo-600 ring-indigo-600  sm:text-sm focus:ring-1`}
                 />
                 <p className="text-red-600 text-sm">
                   {errors.confirmPassword?.message}
