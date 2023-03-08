@@ -60,7 +60,7 @@ export default function Home() {
       router.push("/login");
     } catch (error) {
       console.log(error);
-      toast("Email already in user or Password", {
+      toast("Email already in use or Password", {
         hideProgressBar: true,
         autoClose: 2000,
         type: "error",
@@ -94,7 +94,7 @@ export default function Home() {
   return (
     <>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit) }
         className="flex justify-center items-center w-full bg-teal-50"
       >
         <div className="flex pr-20">
@@ -128,19 +128,19 @@ export default function Home() {
                   type="email"
                   placeholder="Your Email"
                   className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${
-                    errors.email ? "border-red-500 ring-red-500" : ""
-                  } block w-full rounded focus:border-indigo-600  focus:ring-indigo-900  sm:text-sm focus:ring-1`}
+                    errors.email ? "border-red-500 ring-red-500 " : "ring-indigo-600 focus:ring-2"
+                  } block w-full rounded sm:text-sm`}
                 />
               </div>
-              {<p class="text-red-600 text-sm">{errors.email?.message}</p>}
+              {<p className="text-red-600 text-sm">{errors.email?.message}</p>}
               <div className="flex">
                 <input
                   type={password}
                   {...register("password", { required: true })}
                   placeholder="Password"
                   className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${
-                    errors.password ? "border-red-500 ring-red-500" : ""
-                  } block w-full rounded-l-lg  focus:border-indigo-600 ring-indigo-600  sm:text-sm focus:ring-1`}
+                    errors.password ? "border-red-500 ring-red-500 " : "ring-indigo-600 focus:ring-2"
+                  } block w-full rounded-l-lg   sm:text-sm `}
                 />
                 <div className="flex justify-center items-center w-12 bg-orange-600 mt-4 rounded-r-lg  hover:bg-orange-700">
                   {eye ? (
@@ -170,7 +170,7 @@ export default function Home() {
                   type={password}
                   {...register("confirmPassword", { required: true })}
                   placeholder="Confrim Password"
-                  className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${errors.password ? "border-red-500 ring-red-500" : ""} block w-full rounded  focus:border-indigo-600 ring-indigo-600  sm:text-sm focus:ring-1`}
+                  className={`mt-4 px-3 py-3 bg-white border border-slate-300 placeholder-slate-600 focus:outline-none ${errors.password ? "border-red-500 ring-red-500" : "ring-indigo-600 focus:ring-2"} block w-full rounded sm:text-sm`}
                 />
                 <p className="text-red-600 text-sm">
                   {errors.confirmPassword?.message}
