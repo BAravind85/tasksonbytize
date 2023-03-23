@@ -1,8 +1,19 @@
-import reducer from "./reducer/reducer";
-import { combineReducers } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import { loading } from "./reducers/loading";
+import { reducer } from "./reducers/reducers";
 
-const allReducer = combineReducers({
+const composeEnhancers = composeWithDevTools({});
+
+const rootReducers = combineReducers({
   reducer,
+  loading,
 });
 
-export default allReducer;
+const store = createStore(
+  rootReducers,
+  composeEnhancers(applyMiddleware(thunk))
+);
+
+export default store;
