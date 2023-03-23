@@ -19,7 +19,7 @@ let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [passport_1.PassportModule.register({ defaultStrategy: "jwt" }),
+        imports: [passport_1.PassportModule.register({ defaultStrategy: "jwt", property: 'user', session: false }),
             jwt_1.JwtModule.registerAsync({
                 inject: [config_1.ConfigService],
                 useFactory: (config) => {

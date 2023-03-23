@@ -6,6 +6,7 @@ import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
+import { clearConfigCache } from 'prettier';
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class AuthService {
   ) {}
 
   async signUp(signUpDto: SignUpDto): Promise<{ token: string }> {
-    console.log("services is running")
+    // console.log("services is running")
     const {  email, password } = signUpDto;
     const hashedPassword = await bcrypt.hash(password, 10);
     const existEmail= await this.userModel.findOne({email :email})
@@ -29,7 +30,9 @@ export class AuthService {
         password: hashedPassword,
       });
       const token = this.jwtService.sign({ id: user._id });
-      return ;
+      const data  = {...user,token}
+      console.log(data)
+      return data;
     }
   }
 
@@ -41,9 +44,12 @@ export class AuthService {
     }
     const isPasswordMatched = await bcrypt.compare(password, user.password);
     if (!isPasswordMatched) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new UnauthorizedException('Invalid password');
     }
-    const token = this.jwtService.sign({ id: user._id });
-    return { token };
+    const token =  this.jwtService.sign({ id: user._id });
+    
+
+    console.log(token)
+    return {token};
   }
 }

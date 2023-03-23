@@ -21,11 +21,23 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    signUp(signUpDto, response) {
-        return this.authService.signUp(signUpDto);
+    async signUp(signUpDto, response) {
+        const result = await this.authService.signUp(signUpDto);
+        if (result) {
+            return response.status(200).send({ status: "success", message: "Registered successfully" });
+        }
+        else {
+            return response.status(400).send({ status: "success", message: "failed to register" });
+        }
     }
-    login(loginDto) {
-        return this.authService.login(loginDto);
+    async login(loginDto, response) {
+        const result = await this.authService.login(loginDto);
+        if (result) {
+            return response.status(200).send({ status: "success", message: "Registered successfully", data: result.token });
+        }
+        else {
+            return response.status(400).send({ status: "success", message: "failed to register" });
+        }
     }
 };
 __decorate([
@@ -39,8 +51,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [login_dto_1.LoginDto]),
+    __metadata("design:paramtypes", [login_dto_1.LoginDto, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 AuthController = __decorate([

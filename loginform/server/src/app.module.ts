@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { JwtStrategy } from './auth/jwt.stratagy';
+import { PassportModule } from '@nestjs/passport';
 
 
 @Module({
@@ -15,7 +17,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   }),
   // MongooseModule.forRoot(process.env.DB_URI),
 
-  userModule,databaseModule,AuthModule,
+  userModule,databaseModule,AuthModule,PassportModule
 ],
   controllers: [AppController],
   providers: [AppService],

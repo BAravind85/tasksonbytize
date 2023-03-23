@@ -14,6 +14,7 @@ const user_module_1 = require("./user-module/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const app_controller_1 = require("./app.controller");
 const config_1 = require("@nestjs/config");
+const passport_1 = require("@nestjs/passport");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -22,7 +23,7 @@ AppModule = __decorate([
                 envFilePath: '.env',
                 isGlobal: true,
             }),
-            user_module_1.userModule, database_module_1.databaseModule, auth_module_1.AuthModule,
+            user_module_1.userModule, database_module_1.databaseModule, auth_module_1.AuthModule, passport_1.PassportModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

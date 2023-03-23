@@ -25,7 +25,6 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async signUp(signUpDto) {
-        console.log("services is running");
         const { email, password } = signUpDto;
         const hashedPassword = await bcrypt.hash(password, 10);
         const existEmail = await this.userModel.findOne({ email: email });
@@ -38,7 +37,9 @@ let AuthService = class AuthService {
                 password: hashedPassword,
             });
             const token = this.jwtService.sign({ id: user._id });
-            return;
+            const data = Object.assign(Object.assign({}, user), { token });
+            console.log(data);
+            return data;
         }
     }
     async login(loginDto) {
@@ -49,9 +50,10 @@ let AuthService = class AuthService {
         }
         const isPasswordMatched = await bcrypt.compare(password, user.password);
         if (!isPasswordMatched) {
-            throw new common_1.UnauthorizedException('Invalid email or password');
+            throw new common_1.UnauthorizedException('Invalid password');
         }
         const token = this.jwtService.sign({ id: user._id });
+        console.log(token);
         return { token };
     }
 };
